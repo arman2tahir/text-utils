@@ -74,7 +74,7 @@ export default function TextForm() {
   return (
     <>
         <div className="container my-3" >
-            <h1>Enter your text to analyze</h1>
+                <h1>Enter your text to analyze</h1>
             <div className="mb-3" style={{position: "relative"}}>
                 <textarea className="form-control" data-bs-theme={isDark === "light" ? "dark" : "light"} value={text} onChange={changehandler} placeholder='Enter your text here' id="exampleFormControlTextarea1" rows="8"></textarea>
                 <button className='copy-text' style={copyBtn} onClick={copyText}>Copy</button>
