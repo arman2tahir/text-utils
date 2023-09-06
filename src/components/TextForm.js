@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-export default function TextForm() {
+export default function TextForm(props) {
 
     const [text, setText] = useState("");
     const [visible, setvisible] = useState(false);
-
-    const [isDark, setIsDark] = useState(true);
-
-    useEffect(()=>{
-        if (isDark === "light"){
-            document.body.classList.add("dark");
-        }else {
-            document.body.classList.remove("dark")
-        }
-    })
 
     const UpClick = () =>{
         let newText = text.toUpperCase();
@@ -68,22 +58,19 @@ export default function TextForm() {
         transition: "opacity .2s ease-in-out",
     }
 
-    const DarkMode = () =>{
-        setIsDark(isDark === "light" ? "dark" : "light")
-    }
+   
   return (
-    <>
-        <div className="container my-3" >
+    <div className="wrapper">
+        <div className="container" >
                 <h1>Enter your text to analyze</h1>
             <div className="mb-3" style={{position: "relative"}}>
-                <textarea className="form-control" data-bs-theme={isDark === "light" ? "dark" : "light"} value={text} onChange={changehandler} placeholder='Enter your text here' id="exampleFormControlTextarea1" rows="8"></textarea>
+                <textarea className="form-control" data-bs-theme={props.mode} value={text} onChange={changehandler} placeholder='Enter your text here' id="exampleFormControlTextarea1" rows="8"></textarea>
                 <button className='copy-text' style={copyBtn} onClick={copyText}>Copy</button>
                 {visible && <p style={copytext}>Copied!</p>}
             </div>
             <button className="btn btn-primary mx-1" onClick={UpClick}>Convert to UpperCase</button>
             <button className="btn btn-primary mx-1" onClick={LowClick}>Convert to LowerCase</button>
             <button className="btn btn-danger mx-1" onClick={clearClick}>Clear Text</button>
-            <button className="btn btn-warning mx-1" onClick={DarkMode}>{isDark === "light" ? "Light Mode" : "Dark Mode"}</button>
         </div>
         <div className="container">
             <h2>Text Summary</h2>
@@ -91,7 +78,7 @@ export default function TextForm() {
             <h3>Preview</h3>
             <p style={{wordWrap: "break-word"}}>{text}</p>
         </div>
-    </>
+    </div>
 
   )
 }

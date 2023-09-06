@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ export default function NavBar(props) {
 
   return (
     <>
-    <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={props.mode}>
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">TextUtils</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,9 @@ export default function NavBar(props) {
                     <Link className="nav-link" to="/about">About</Link>
                     </li>
                 </ul>
-                <div class="form-check form-switch text-light">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Enable Dark Mode</label>
+                <div className="form-check form-switch">
+                    <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.btnText}</label>
                 </div>
             </div>
         </div>
