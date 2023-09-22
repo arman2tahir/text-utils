@@ -4,31 +4,44 @@ import NavBar from "./components/NavBar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
 import React, { useState } from 'react'
+import Alert from "./components/Alert";
 
 function App() {
   const [isDark, setIsDark] = useState("light");
 
+  const [alert, setAlert] = useState(null);
 
-    const toggleMode = () =>{
-      if(isDark === "light"){
-        setIsDark("dark");
-        document.body.classList.add("dark");
-      }
-      else{
-        setIsDark("light");
-        document.body.classList.remove("dark");
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
 
 
-      }
 
-      console.log("hello")
+  const toggleMode = () => {
+    if (isDark === "light") {
+      setIsDark("dark");
+      document.body.classList.add("dark");
+      showAlert("Dark mode has been enabled", "success")
     }
+    else {
+      setIsDark("light");
+      document.body.classList.remove("dark");
+      showAlert("Light mode has been enabled", "success")
+    }
+  }
   return (
     <Router>
-      <NavBar toggleMode={toggleMode} mode={isDark} btnText={isDark === 'dark' ? 'Disable Dark Mode' : 'Enable Dark Mode'}/>
+      <NavBar toggleMode={toggleMode} mode={isDark} btnText={isDark === 'dark' ? 'Disable Dark Mode' : 'Enable Dark Mode'} />
+      <Alert alert={alert} />
       <Routes>
-      <Route path="/" element={<TextForm mode={isDark}/>}/>
-      <Route path="/about" element={<About mode={isDark}/>}/>
+        <Route path="/" element={<TextForm mode={isDark} showAlert={showAlert}/>} />
+        <Route path="/about" element={<About mode={isDark} />} />
       </Routes>
     </Router>
   );

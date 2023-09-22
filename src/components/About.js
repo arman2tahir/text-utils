@@ -1,8 +1,9 @@
 import React from 'react'
 
 export default function About(props) {
+
   return (
-    <div className="container my-5">
+    <div className="container my-5 wrapper">
         <h1>About Us</h1>
         <div className="accordion" id="accordionExample"  data-bs-theme={props.mode}>
             <div className="accordion-item">
