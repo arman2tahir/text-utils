@@ -39,3 +39,16 @@ body.dark {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.container,
+.container-sm {
+  max-width: 100%;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+  }
+}
