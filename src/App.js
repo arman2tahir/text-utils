@@ -40,8 +40,8 @@ function App() {
       <NavBar toggleMode={toggleMode} mode={isDark} btnText={isDark === 'dark' ? 'Disable Dark Mode' : 'Enable Dark Mode'} />
       <Alert alert={alert} />
       <Routes>
-        <Route path="/" element={<TextForm mode={isDark} showAlert={showAlert}/>} />
-        <Route path="/about" element={<About mode={isDark} />} />
+        <Route path="/text-utils" element={<TextForm mode={isDark} showAlert={showAlert}/>} />
+        <Route path="/text-utils/about" element={<About mode={isDark} />} />
       </Routes>
     </Router>
   );
